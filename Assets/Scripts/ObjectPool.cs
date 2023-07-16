@@ -6,28 +6,29 @@ public class ObjectPool : MonoBehaviour
 {
     
     private Queue<GameObject> pooledObjects; // Oyun nesnelerini saklayan Nesne Havuzumuz; Array, List, Queue  vb. olabilir
-    [SerializeField] private GameObject objectPrefab; // Hangi objemiz çoðaltýlacak, 
-    [SerializeField] private int poolSize; // Havuzun büyüklüðü (eleman sayýsý)
+    [SerializeField] private GameObject objectPrefab; // Hangi objemiz Ã§oÄŸaltÄ±lacak, 
+    [SerializeField] private int poolSize; // Havuzun bÃ¼yÃ¼klÃ¼ÄŸÃ¼ (eleman sayÄ±sÄ±) 
 
     private void Awake()
     {
-        pooledObjects = new Queue<GameObject>(); // Yeni bir kuyruk oluþturuyoruz.
-        // Döngü ile havuzun içerisinde prefab nesnelerimizi oluþturuyoruz.
+        
+        pooledObjects = new Queue<GameObject>(); // Yeni bir kuyruk oluï¿½turuyoruz.
+        // Dï¿½ngï¿½ ile havuzun iï¿½erisinde prefab nesnelerimizi oluï¿½turuyoruz.
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = Instantiate(objectPrefab);
-            obj.SetActive(false); // ilk etapta bu nesneleri kullanmayacaðýmýz için pasif hale getirdik
-            pooledObjects.Enqueue(obj); // Sýraya soktuk.
+            obj.SetActive(false); // ilk etapta bu nesneleri kullanmayacaÄŸÄ±mÄ±z iÃ§in pasif hale getirdik
+            pooledObjects.Enqueue(obj); // SÄ±raya soktuk.
         }      
     }
 
-    // Pooled objemizi çaðýrmak için yazýlan fonksiyon.
-    public GameObject GetPooedObject()
+    // Pooled objemizi ï¿½aï¿½ï¿½rmak iï¿½in yazï¿½lan fonksiyon.
+    public GameObject GetPooledObject()
     {
-        GameObject obj =  pooledObjects.Dequeue(); // onjeyi sýradan çýkartýyoruz.
+        GameObject obj =  pooledObjects.Dequeue(); // onjeyi sï¿½radan ï¿½ï¿½kartï¿½yoruz.
         obj.SetActive(true); // Aktif hale getiriyoruz.
-        pooledObjects.Enqueue(obj); // tekrar sýraya sokuyoruz.
-        return obj; // Çýkardýðýmýz objeyi döndürüyoruz.
+        pooledObjects.Enqueue(obj); // tekrar sï¿½raya sokuyoruz.
+        return obj; // ï¿½ï¿½kardï¿½ï¿½ï¿½mï¿½z objeyi dï¿½ndï¿½rï¿½yoruz.
     }
 
 }

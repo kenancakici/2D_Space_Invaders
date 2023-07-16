@@ -151,5 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3887138093049404c8a1f37e035031d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  width: 0
   bulletPrefab: {fileID: 8307229524703108768, guid: 5df485c18cd7ee24bb5da3033404037a, type: 3}
   objectPool: {fileID: 0}
